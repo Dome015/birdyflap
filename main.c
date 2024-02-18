@@ -38,6 +38,11 @@ int main(void)
     double playerY = (double) screenHeight / 2.0;
     double playerW = 50.0;
     double playerH = 50.0;
+    double playerVelocity = 0.0;
+
+    // Physics
+    double gravity = 0.5;
+    double jumpVelocity = -10.0;
 
     InitWindow(screenWidth, screenHeight, "Birdyflap");
 
@@ -49,7 +54,14 @@ int main(void)
     {
         // Update
         //----------------------------------------------------------------------------------
-        // TODO: Update your variables here
+        // Gravity on player
+        playerVelocity += gravity;
+        // Jump
+        if (IsKeyPressed(KEY_SPACE)) {
+            playerVelocity = jumpVelocity;
+        }
+        // Player movement
+        playerY += playerVelocity;
         //----------------------------------------------------------------------------------
 
         // Draw
